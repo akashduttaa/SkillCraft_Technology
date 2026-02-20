@@ -1,0 +1,162 @@
+Apply Inter font to the entire body
+body {
+    font-family: 'Inter', sans-serif;
+    margin: 0;
+    /* Padding to prevent content from being hidden behind the fixed navbar */
+    padding-top: 80px; 
+}
+
+/* Custom CSS for navigation bar transitions */
+.navbar {
+    /* Smooth transitions for background, shadow, and padding changes */
+    transition: background-color 0.3s ease-in-out, box-shadow 0.3s ease-in-out, padding 0.3s ease-in-out;
+}
+
+/* Styles for when the navigation bar is scrolled */
+.navbar.scrolled {
+    background-color: rgba(255, 255, 255, 0.95); /* Slightly transparent white for light theme */
+    box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1); /* Subtle shadow */
+    padding-top: 0.75rem; /* Smaller padding when scrolled */
+    padding-bottom: 0.75rem;
+}
+
+/* Text color for navigation links when scrolled in light theme */
+.navbar.scrolled .nav-link {
+    color: #1a202c; /* Darker text color */
+}
+
+/* Hover color for navigation links when scrolled in light theme */
+.navbar.scrolled .nav-link:hover {
+    color: #4f46e5; /* Accent color */
+}
+
+/* Ensure smooth transitions for navigation links */
+.nav-link {
+    transition: color 0.3s ease-in-out;
+}
+
+/* --- Dark Theme Styles --- */
+/* Dark mode body background and text color */
+html.dark body {
+    background-color: #1a202c; /* Dark background */
+    color: #e2e8f0; /* Light text */
+}
+
+/* Dark mode navigation bar default state */
+html.dark .navbar {
+    background-color: #2d3748; /* Darker background for navbar */
+    color: #e2e8f0; /* Lighter text for navbar */
+}
+
+/* Dark mode navigation links default state */
+html.dark .navbar .nav-link {
+    color: #e2e8f0; /* Lighter text for links */
+}
+
+/* Dark mode navigation links hover state */
+html.dark .navbar .nav-link:hover {
+    color: #9f7aea; /* Purple accent on hover */
+}
+
+/* Dark mode navigation bar when scrolled */
+html.dark .navbar.scrolled {
+    background-color: rgba(45, 55, 72, 0.95); /* Slightly transparent darker background */
+    box-shadow: 0 4px 6px rgba(0, 0, 0, 0.3); /* Darker shadow */
+}
+
+/* Dark mode navigation links when scrolled */
+html.dark .navbar.scrolled .nav-link {
+    color: #e2e8f0; /* Lighter text when scrolled */
+}
+
+/* Dark mode navigation links hover when scrolled */
+html.dark .navbar.scrolled .nav-link:hover {
+    color: #9f7aea; /* Purple accent on hover when scrolled */
+}
+
+/* Dark mode for main content sections */
+html.dark main section {
+    background-color: #2d3748; /* Dark background for sections */
+    color: #e2e8f0; /* Light text for sections */
+    box-shadow: 0 4px 6px rgba(0, 0, 0, 0.3); /* Darker shadow */
+}
+
+/* Dark mode for sections that were originally gray-100 */
+html.dark #services,
+html.dark #contact {
+    background-color: #2d3748; /* Darker background */
+}
+
+/* Dark mode for nested white elements within sections (e.g., service cards, form) */
+html.dark #services > div > div, /* Service cards */
+html.dark #portfolio > div > div, /* Project cards */
+html.dark #contact form { /* Contact form */
+    background-color: #4a5568; /* Even darker background for nested elements */
+    color: #e2e8f0; /* Light text */
+    box-shadow: 0 4px 6px rgba(0, 0, 0, 0.3); /* Darker shadow */
+}
+
+/* Dark mode text colors for specific elements */
+html.dark h2,
+html.dark h3 {
+    color: #9f7aea; /* Purple accent for headings */
+}
+
+html.dark p,
+html.dark label {
+    color: #cbd5e0; /* Lighter gray for paragraphs and labels */
+}
+
+/* Dark mode input fields and textareas */
+html.dark input,
+html.dark textarea {
+    background-color: #2d3748; /* Dark background for inputs */
+    color: #e2e8f0; /* Light text color for inputs */
+    border-color: #4a5568; /* Darker border */
+}
+
+/* Dark mode footer */
+html.dark footer {
+    background-color: #1a202c; /* Darkest background for footer */
+    color: #cbd5e0; /* Light text for footer */
+}
+
+/* Dark mode Back to Top button */
+html.dark #backToTopBtn {
+    background-color: #9f7aea; /* Purple background for button */
+    color: #ffffff; /* White text for button */
+}
+
+html.dark #backToTopBtn:hover {
+    background-color: #805ad5; /* Darker purple on hover */
+}
+
+
+.footer {
+  background-color: #1f2937; 
+  color: white;
+  text-align: center;
+  padding: 1.5rem;
+  margin-top: 2rem;
+  border-top-left-radius: 0.5rem;
+  border-top-right-radius: 0.5rem;
+  transition: background-color 0.3s ease;
+}
+
+.footer .socials {
+  display: flex;
+  justify-content: center;
+  gap: 1.25rem;
+  margin-top: 1rem;
+  font-size: 1.25rem;
+}
+
+.footer .socials a {
+  color: white;
+  transition: transform 0.3s ease, color 0.3s ease;
+}
+
+.footer .socials a:hover {
+  color: #60a5fa; 
+  transform: scale(1.2);
+}
