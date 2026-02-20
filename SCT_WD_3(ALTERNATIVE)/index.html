@@ -1,0 +1,117 @@
+<!DOCTYPE html>
+<html lang="en" class="light"> <!-- 'light' class is default, will be toggled by JS for dark mode -->
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Professional Quiz Game</title>
+    
+    <!-- Load Tailwind CSS from CDN for utility-first styling -->
+    <script src="https://cdn.tailwindcss.com"></script>
+    
+    <!-- Google Fonts - Inter for a modern and professional look -->
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+    
+    <!-- Link to Font Awesome for social media icons and navigation icons -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.4/css/all.min.css" xintegrity="sha512-1ycn6IcaQQ40/MKBW2W4Rhis/DbILU74C1vSrLJxCq57o941Ym01SwNsOMqvEBFlcgUa6xLiPY/NS5R+E6ztJQ==" crossorigin="anonymous" referrerpolicy="no-referrer" />
+
+    <!-- Link to your custom CSS file for specific styles and dark mode overrides -->
+    <link rel="stylesheet" href="style.css">
+</head>
+<body class="bg-gray-100 text-gray-900 transition-colors duration-300 flex flex-col min-h-screen">
+    <!--
+        The 'bg-gray-100' and 'text-gray-900' are default light theme colors applied to the body.
+        These will smoothly transition to dark theme colors when the 'dark' class is applied to the <html> tag by JavaScript.
+        'transition-colors duration-300' ensures a smooth visual change during theme toggling.
+        'flex flex-col min-h-screen' ensures the footer sticks to the bottom.
+    -->
+
+    <!-- Header Section -->
+    <header class="bg-red-600 text-white p-4 shadow-md rounded-b-lg">
+        <div class="container mx-auto flex justify-between items-center">
+            <h1 class="text-3xl font-bold">Quiz Game</h1>
+            <!-- Dark Mode Toggle Switch -->
+            <div class="flex items-center">
+                <span class="text-white mr-2">Light</span>
+                <label for="themeToggle" class="relative inline-flex items-center cursor-pointer">
+                    <input type="checkbox" id="themeToggle" class="sr-only peer">
+                    <div class="w-11 h-6 bg-gray-200 peer-focus:outline-none peer-focus:ring-4 peer-focus:ring-blue-300 dark:peer-focus:ring-blue-800 rounded-full peer dark:bg-gray-700 peer-checked:after:translate-x-full peer-checked:after:border-white after:content-[''] after:absolute after:top-[2px] after:left-[2px] after:bg-white after:border-gray-300 after:border after:rounded-full after:h-5 after:w-5 after:transition-all dark:border-gray-600 peer-checked:bg-blue-600"></div>
+                    <span class="ml-2 text-white">Dark</span>
+                </label>
+            </div>
+        </div>
+    </header>
+
+    <!-- Main Content Area for Quiz -->
+    <main class="flex-grow container mx-auto p-8 flex items-center justify-center">
+        <div class="bg-white rounded-lg shadow-xl p-6 w-full max-w-2xl text-center transition-colors duration-300">
+            <h2 class="text-3xl font-bold text-indigo-700 mb-6">Test Your Knowledge!</h2>
+
+            <!-- Quiz Container -->
+            <div id="quizContainer" class="hidden">
+                <!-- Question Number Display -->
+                <p class="text-lg text-gray-600 dark:text-gray-300 mb-4">Question <span id="questionNumber">1</span> of <span id="totalQuestions">5</span></p>
+                
+                <!-- Question Text -->
+                <p id="questionText" class="text-2xl font-semibold mb-6 text-gray-800 dark:text-gray-100"></p>
+                
+                <!-- Answer Options -->
+                <div id="answerOptions" class="flex flex-col space-y-3 mb-6">
+                    <!-- Options will be dynamically inserted here by JavaScript -->
+                </div>
+
+                <!-- Quiz Navigation Buttons -->
+                <div class="flex justify-between mt-4">
+                    <button id="prevButton" class="btn btn-secondary" disabled>
+                        <i class="fas fa-arrow-left mr-2"></i> Previous
+                    </button>
+                    <button id="nextButton" class="btn btn-primary">
+                        Next <i class="fas fa-arrow-right ml-2"></i>
+                    </button>
+                    <button id="submitQuizButton" class="btn btn-success hidden">
+                        Submit Quiz <i class="fas fa-check ml-2"></i>
+                    </button>
+                </div>
+            </div>
+
+            <!-- Quiz Results Container -->
+            <div id="resultsContainer" class="hidden">
+                <h3 class="text-3xl font-bold text-indigo-700 mb-4">Quiz Results</h3>
+                <p id="scoreDisplay" class="text-4xl font-extrabold text-gray-800 dark:text-gray-100 mb-6"></p>
+                <button id="restartQuizButton" class="btn btn-primary">
+                    <i class="fas fa-redo mr-2"></i> Restart Quiz
+                </button>
+            </div>
+
+            <!-- Start Quiz Button (Initial state) -->
+            <button id="startQuizButton" class="btn btn-primary">
+                <i class="fas fa-play mr-2"></i> Start Quiz
+            </button>
+        </div>
+    </main>
+
+    <!-- Professional Footer -->
+    <footer class="footer bg-gray-800 text-white flex flex-col md:flex-row justify-between items-center p-6 mt-8 rounded-t-lg transition-colors duration-300">
+        <!-- Copyright text - The year will be dynamically updated by JavaScript -->
+        <p>&copy; <span id="currentYear"></span> SkillCraft. Designed & developed by <strong>Akash Dutta</strong>.</p>
+        
+        <!-- Social media links container -->
+        <div class="socials flex space-x-4 mt-4 md:mt-0">
+            <!-- GitHub Icon Link -->
+            <a href="https://github.com/akashduttaa" target="_blank" rel="noreferrer" class="text-white hover:text-indigo-400 transition-colors duration-300">
+                <i class="fab fa-github text-2xl"></i>
+            </a>
+            <!-- LinkedIn Icon Link -->
+            <a href="https://linkedin.com/in/akash-dutta-ad/" target="_blank" rel="noreferrer" class="text-white hover:text-indigo-400 transition-colors duration-300">
+                <i class="fab fa-linkedin text-2xl"></i>
+            </a>
+            <!-- Instagram Icon Link -->
+            <a href="https://www.instagram.com/akashdutta___" target="_blank" rel="noreferrer" class="text-white hover:text-indigo-400 transition-colors duration-300">
+                <i class="fab fa-instagram text-2xl"></i>
+            </a>
+        </div>
+    </footer>
+
+    <!-- Link to your custom JavaScript file -->
+    <script src="script.js"></script>
+</body>
+</html>

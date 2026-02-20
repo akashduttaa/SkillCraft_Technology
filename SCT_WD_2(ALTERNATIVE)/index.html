@@ -1,0 +1,133 @@
+<!DOCTYPE html>
+<html lang="en" class="light"> <!-- 'light' class is default, will be toggled by JS for dark mode -->
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title> Calculator Web App</title>
+    
+    <!-- Load Tailwind CSS from CDN for utility-first styling -->
+    <script src="https://cdn.tailwindcss.com"></script>
+    
+    <!-- Google Fonts - Inter for a modern and professional look -->
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+    
+    <!-- Link to Font Awesome for social media icons and calculator operations -->
+    <!-- This CDN provides the necessary icon fonts and stylesheets. -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.4/css/all.min.css" xintegrity="sha512-1ycn6IcaQQ40/MKBW2W4Rhis/DbILU74C1vSrLJxCq57o941Ym01SwNsOMqvEBFlcgUa6xLiPY/NS5R+E6ztJQ==" crossorigin="anonymous" referrerpolicy="no-referrer" />
+
+    <!-- Link to your custom CSS file for specific styles and dark mode overrides -->
+    <link rel="stylesheet" href="style.css">
+</head>
+<body class="bg-gray-100 text-gray-900 transition-colors duration-300 flex flex-col min-h-screen">
+    <!--
+        The 'bg-gray-100' and 'text-gray-900' are default light theme colors applied to the body.
+        These will smoothly transition to dark theme colors when the 'dark' class is applied to the <html> tag by JavaScript.
+        'transition-colors duration-300' ensures a smooth visual change during theme toggling.
+        'flex flex-col min-h-screen' ensures the footer sticks to the bottom.
+    -->
+
+    <!-- Header Section -->
+    <header class="bg-indigo-700 text-white p-4 shadow-md rounded-b-lg">
+        <div class="container mx-auto flex justify-between items-center">
+            <h1 class="text-3xl font-bold">Calculator App</h1>
+            <!-- Dark Mode Toggle Switch -->
+            <div class="flex items-center">
+                <span class="text-white mr-2">Light</span>
+                <label for="themeToggle" class="relative inline-flex items-center cursor-pointer">
+                    <input type="checkbox" id="themeToggle" class="sr-only peer">
+                    <div class="w-11 h-6 bg-gray-200 peer-focus:outline-none peer-focus:ring-4 peer-focus:ring-blue-300 dark:peer-focus:ring-blue-800 rounded-full peer dark:bg-gray-700 peer-checked:after:translate-x-full peer-checked:after:border-white after:content-[''] after:absolute after:top-[2px] after:left-[2px] after:bg-white after:border-gray-300 after:border after:rounded-full after:h-5 after:w-5 after:transition-all dark:border-gray-600 peer-checked:bg-blue-600"></div>
+                    <span class="ml-2 text-white">Dark</span>
+                </label>
+            </div>
+        </div>
+    </header>
+
+    <!-- Main Content Area for Calculator -->
+    <main class="flex-grow container mx-auto p-8 flex items-center justify-center">
+        <div class="bg-white rounded-lg shadow-xl p-6 w-full max-w-sm transition-colors duration-300">
+            <!-- Calculator Display -->
+            <!--
+                'calculator-display' for custom styling.
+                'bg-gray-100' default light background.
+                'dark:bg-gray-700' dark mode background.
+                'text-right' for number alignment.
+                'text-5xl' for large text.
+                'font-mono' for a calculator-like font.
+                'p-4 rounded-md mb-4' for padding, rounded corners, and bottom margin.
+                'overflow-hidden' to prevent text overflow.
+                'break-all' to break long words if they exceed container width.
+            -->
+            <div id="display" class="calculator-display bg-gray-100 dark:bg-gray-700 text-gray-800 dark:text-gray-100 text-right text-5xl font-mono p-4 rounded-md mb-4 overflow-hidden break-all transition-colors duration-300">0</div>
+
+            <!-- Calculator Buttons Grid -->
+            <!--
+                'grid grid-cols-4 gap-2' creates a 4-column grid with small gaps.
+            -->
+            <div class="grid grid-cols-4 gap-2">
+                <!-- Row 1: Clear, Sign Change, Percentage, Divide -->
+                <button class="btn btn-secondary" data-action="clear">AC</button>
+                <button class="btn btn-secondary" data-action="sign">+/-</button>
+                <button class="btn btn-secondary" data-action="percent">%</button>
+                <button class="btn btn-operator" data-action="divide">/</button>
+
+                <!-- Row 2: Numbers 7-9, Multiply -->
+                <button class="btn btn-number">7</button>
+                <button class="btn btn-number">8</button>
+                <button class="btn btn-number">9</button>
+                <button class="btn btn-operator" data-action="multiply">*</button>
+
+                <!-- Row 3: Numbers 4-6, Subtract -->
+                <button class="btn btn-number">4</button>
+                <button class="btn btn-number">5</button>
+                <button class="btn btn-number">6</button>
+                <button class="btn btn-operator" data-action="subtract">-</button>
+
+                <!-- Row 4: Numbers 1-3, Add -->
+                <button class="btn btn-number">1</button>
+                <button class="btn btn-number">2</button>
+                <button class="btn btn-number">3</button>
+                <button class="btn btn-operator" data-action="add">+</button>
+
+                <!-- Row 5: Number 0, Decimal, Equals -->
+                <!-- 'col-span-2' makes the 0 button span two columns -->
+                <button class="btn btn-number col-span-2">0</button>
+                <button class="btn btn-number" data-action="decimal">.</button>
+                <button class="btn btn-equals" data-action="equals">=</button>
+            </div>
+        </div>
+    </main>
+
+    <!-- Professional Footer -->
+    <!--
+        'footer' class for custom CSS styling defined in style.css.
+        'bg-gray-800 text-white' provides the default light theme background and text color.
+        'flex flex-col md:flex-row' makes the footer content stack vertically on small screens and align horizontally on medium screens and up.
+        'justify-between items-center' distributes space and aligns items.
+        'p-6 mt-8 rounded-t-lg' for internal padding, top margin, and rounded top corners.
+        'transition-colors duration-300' ensures smooth theme changes for the footer.
+    -->
+    <footer class="footer bg-gray-800 text-white flex flex-col md:flex-row justify-between items-center p-6 mt-8 rounded-t-lg transition-colors duration-300">
+        <!-- Copyright text - The year will be dynamically updated by JavaScript -->
+        <p>&copy; <span id="currentYear"></span> SkillCraft. Designed & developed by <strong>Akash Dutta</strong>.</p>
+        
+        <!-- Social media links container -->
+        <div class="socials flex space-x-4 mt-4 md:mt-0">
+            <!-- GitHub Icon Link -->
+            <a href="https://github.com/akashduttaa" target="_blank" rel="noreferrer" class="text-white hover:text-indigo-400 transition-colors duration-300">
+                <i class="fab fa-github text-2xl"></i> <!-- Font Awesome GitHub icon -->
+            </a>
+            <!-- LinkedIn Icon Link -->
+            <a href="https://linkedin.com/in/akash-dutta-ad/" target="_blank" rel="noreferrer" class="text-white hover:text-indigo-400 transition-colors duration-300">
+                <i class="fab fa-linkedin text-2xl"></i> <!-- Font Awesome LinkedIn icon -->
+            </a>
+            <!-- Instagram Icon Link -->
+            <a href="https://www.instagram.com/akashdutta___" target="_blank" rel="noreferrer" class="text-white hover:text-indigo-400 transition-colors duration-300">
+                <i class="fab fa-instagram text-2xl"></i> <!-- Font Awesome Instagram icon -->
+            </a>
+        </div>
+    </footer>
+
+    <!-- Link to your custom JavaScript file, deferred to execute after HTML is parsed -->
+    <script src="script.js"></script>
+</body>
+</html>
